@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import AComponent from "./AComponent";
+import BComponent from "./BComponent";
+import CComponent from "./CComponent";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [AComponentValue, setAComponentValue] = useState("");
+  const [BComponentValue, setBComponentValue] = useState("");
+  const [CComponentValue, setCComponentValue] = useState("");
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <AComponent
+        AComponentValue={AComponentValue}
+        onChangeFromA={(inputValue) => setBComponentValue(inputValue)}
+        onChangeFromA2={(inputValue) => setCComponentValue(inputValue)}
+      ></AComponent>
+      <hr />
+      <BComponent
+        BComponentValue={BComponentValue}
+        onChangeFromB={(inputValue) => setAComponentValue(inputValue)}
+      ></BComponent>
+      <hr />
+      <CComponent
+        CComponentValue={CComponentValue}
+        onChangeFromC={(inputValue) => setAComponentValue(inputValue)}
+      ></CComponent>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
